@@ -18,9 +18,9 @@ The training data for this project comes from experiments simulating various ope
 - Evaluate the efficiency and accuracy of the models
 
 **Remarks**: 
-- Live Scripts marked with (EN) = complete English translation
-- Live Scripts marked with (CN) = for the most part in Chinese
-- All functions have Chinese comments 
+- Live Scripts marked with (**EN**) = complete English translation
+- Live Scripts marked with (**CN**) = for the most part in Chinese
+- All functions comments are written in Chinese
 
 ## Stage 1: Preprocess & Explore
 
@@ -141,7 +141,7 @@ Use MATLAB's Regression Learner App to evaluate the three candidate model types 
 
 By fitting a linear model with quadratic (and lower-order) terms, and rank all predictors by their mean absolute Shaplay value, it can be shown that the feature "T_max" is several times more important than any other feature.
 
-**5.2 Investigation of Sensitivity of Both Tasks to the Number and Placement of the Sensors**
+**5.3 Investigation of Sensitivity of Both Tasks to the Number and Placement of the Sensors**
 
 The order by which sensor elimination is performed is generated randomly for a bunch of times. Then the 10-fold cross-validated MSE is calculated and plotted for each case.
 
@@ -157,17 +157,17 @@ The results show that:
 
 **Therefore**, the optimization of sensor quantity and placement should be oriented on the accuracy of the second task.
 
-**5.3 Optimal Sensor Selection for Every Possible Number of Sensors**
+**5.4 Optimal Sensor Selection for Every Possible Number of Sensors**
 
 Due to the small number of sensors, the "Optimal Subset Selection Algorithm" can be used to determine *the best* possible sensor combination for every possible number of retained sensor. The model considered is a linear model with quadratic and lower-order terms.
 
-**5.4 Evaluate the effect of eliminating of Statistically Insignificant Terms**
+**5.5 Evaluate the effect of eliminating of Statistically Insignificant Terms**
 
 This can be easily implemented by replacing the fitlm(...,'quadratic') function in the Best Subset Selection program with the stepwiselm(...,'quadratic','Upper','quadratic') function. [To be done]
 
-**5.5 Determining Optimal Sensor Quantity and Placement**
+**5.6 Determining Optimal Sensor Quantity and Placement**
 
 This depends on the definition of acceptable prediction accuracy. See Section 4.0. [Not yet determined]
 
-**5.6 Interpretation of the chosen Model**
+**5.7 Interpretation of the chosen Model**
 This can be achieved by ranking the features (= sensors) according to their Mean Absolute Shapley Values. [To be done]
