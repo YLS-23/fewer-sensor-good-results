@@ -170,4 +170,5 @@ This can be easily implemented by replacing the fitlm(...,'quadratic') function 
 This depends on the definition of acceptable prediction accuracy. See Section 4.0. [Not yet determined]
 
 **5.7 Interpretation of the chosen Model**
+
 This can be achieved by ranking the features (= sensors) according to their Mean Absolute Shapley Values. [To be done]
