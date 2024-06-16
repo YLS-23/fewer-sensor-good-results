@@ -1,14 +1,17 @@
 ### Bachelor Thesis Overview
 
 ## Background
+
 The condition monitoring of plain bearings is crucial for identifying critical operating states such as mixed and boundary friction in real time. Key factors in this process are the maximum temperature of the lubricant film (T_max) and the minimum lubrication film thickness (h_min). 
 
 Traditionally, h_min is determined by directly measuring the distance between the shaft and the bearing. However, recent studies have shown that h_min can be determined based on the position of T_max, which eliminates the need for distance sensors and significantly reduces costs. This method is based on the Gümbel curve, documented in DIN 31652, and is currently limited to stationary or quasi-stationary operating conditions.
 
 # Objective of the Bachelor Thesis
+
 My bachelor thesis is part of a series of research projects developing a self-sustaining plain bearing with an integrated, temperature-based monitoring system. The system is powered by thermoelectric generators, enabling its use in industrial applications without special adaptations. My focus is to investigate whether machine learning methods can reduce the number of sensors required without compromising prediction accuracy.
 
 # Methodology
+
 The training data for this project comes from experiments simulating various operating conditions. Both MATLAB and machine learning techniques are employed to:
 - Collect and analyze data
 - Develop models to predict T_max and h_min
