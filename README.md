@@ -6,7 +6,7 @@ The condition monitoring of plain bearings is crucial for identifying critical o
 
 Traditionally, h_min is determined by directly measuring the distance between the shaft and the bearing. However, recent studies have shown that h_min can be determined based on the position of T_max, which eliminates the need for distance sensors and significantly reduces costs. This method is based on the Gümbel curve, documented in DIN 31652, and is currently limited to stationary or quasi-stationary operating conditions.
 
-### Objective of the Bachelor Thesis
+### Objective
 
 My bachelor thesis is part of a series of research projects developing a self-sustaining plain bearing with an integrated, temperature-based monitoring system. The system is powered by thermoelectric generators, enabling its use in industrial applications without special adaptations. My focus is to investigate whether machine learning methods can reduce the number of sensors required without compromising prediction accuracy.
 
@@ -97,6 +97,7 @@ functions: beta_to_epsilon, epsilon_to_beta, epsilon_to_hmin, hmin_to_epsilon, b
 The Problem can be devided into two parts:
 1. Prediction of the T_max value and
 2. Prediction of the T_max position,
+
 with the accuracy of second task being more important.
 
 **Objective**:
@@ -104,7 +105,7 @@ Investigating whether the use of machine learning algorithms can reduce the numb
 
 **Constraints**:
 - Only the measured temperature data is available to the bearing. Thus, **for the first task**, the only input is sensor data, while **for the second task**, the result of the first task (T_max value) can also act as input. Note it has been confirmed at a later stage that T_max actually is *the most* important predictor for the second task, indicating an strong interconnection between the two tasks.
-- Due to energy constraints, available models are reduced to the ones that only require minimal computational effort: linear models, decision trees, ensembles of trees.
+- Due to **energy constraints**, available models are reduced to the ones that only require minimal computational effort: linear models, decision trees, ensembles of trees.
 - Only stationary or quasi-stationary (constant angular velocity for all moving parts) operating points can be used for modeling.
 
 **Definition of acceptable prediction accuracy**: 
