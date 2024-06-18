@@ -20,6 +20,7 @@ The training data for this project comes from experiments simulating various ope
 **Remarks**: 
 - Live Scripts marked with (**EN**) = complete English translation
 - Live Scripts marked with (**CN**) = for the most part in Chinese
+- **The data are copyright reserved and therefore not uploaded**
 
 ## Stage 1: Preprocess & Explore
 
@@ -39,6 +40,13 @@ The Excel tables are automatically imported into a MATLAB structure array, with 
 - Temperature curve profiles at each time cross-section (time cross-section animation)
 - Changes in the position of the maximum temperature over time (maxT_position_animation)
 
+*Example: Test Plan for the experiment data_10MPa_1.00h_Oil_60_deg_Stepped*
+![image](https://github.com/YLS-23/fewer-sensors-same-results/assets/172030231/1dcd5bdc-db94-47a5-9513-12f8d515d70a)
+
+*Example: Animation of the changes in position of the maximum temperature over time*
+
+![image](https://github.com/YLS-23/fewer-sensors-same-results/assets/172030231/8174a08c-f0d9-4f10-9140-2b8d4eec439e)
+
 ### 1.3 Analysis and Possible Explanations
 
 The **measurements from the first five sensors** are primarily influenced by the inlet temperature of the lubricant oil. When the inlet oil temperature is higher than the initial temperature of the bearing (room temperature), the system requires time to reach thermal equilibrium. During this period, the highest temperature is consistently recorded by the sensor closest to the oil inlet.
@@ -55,9 +63,15 @@ functions: avgT_changeRate, positionFilter
 
 Points where the rate of change of T_mean exceeds a threshold are excluded.
 
+*Example: The rate of change of T_mean for the experiment data_10MPa_1.00h_Oil_60_deg_Stepped*
+![image](https://github.com/YLS-23/fewer-sensors-same-results/assets/172030231/e3a0f676-737f-494d-8783-ed029fc1c631)
+
 ### 2.2 Exclusion of Unusable Points
 
 Points where the position of the maximum temperature lies outside the evaluable range are excluded.
+
+*Example: Test Plan after complete filteration for the experiment data_10MPa_1.00h_Oil_60_deg_Stepped*
+![image](https://github.com/YLS-23/fewer-sensors-same-results/assets/172030231/39d6964e-4238-437e-910a-eca424a42819)
 
 ## Stage 3: Polynomial Fitting
 
@@ -72,12 +86,19 @@ functions: adj_R2_polyfit, selectRows
 
 Due to the wide spacing between sensors (7.5 degrees between adjacent sensors), determining h_min without interpolation is unrealistic. In addition, the values measured by each sensor may not be accurate, since they were all manually calibrated to improve the performance. Polynomial interpolation therefore is necessary to obtain precise values. 
 
+*Determinable h_min based entirely on measurable T_max positions without applying any interpolation*
+![image](https://github.com/YLS-23/fewer-sensors-same-results/assets/172030231/e7253f84-f4b7-461d-88aa-9950f924e8b2)
+
 ### 3.1 Selection of Suitable Polynomials
 
 Polynomials of degrees 3 to 8 are tested and selected based on the adjusted R^2. Even-degree polynomials are preferred due to their symmetry matching the shapes of the temperature curves.
 
-The results indicate that for Sommerfeld numbers So < 14, polynomials of degree 4 or higher can adequately represent the curve.
-For Sommerfeld numbers ≥ 14, however, polynomials of degree 6 or higher are more suitable.
+The results indicate that 
+
+- for Sommerfeld numbers So < 14, polynomials of degree 4 or higher can adequately represent the curve;
+- for Sommerfeld numbers ≥ 14, however, polynomials of degree 6 or higher are more suitable.
+
+![image](https://github.com/YLS-23/fewer-sensors-same-results/assets/172030231/3fdb9d5c-2b63-49a6-9299-d0a0d4d764dc)
 
 ### 3.2 Fitting of Temperature Curves with 6th Degree Polynomials
 
@@ -141,6 +162,8 @@ Use MATLAB's Regression Learner App to evaluate the three candidate model types 
 
 By fitting a linear model with quadratic (and lower-order) terms, and rank all predictors by their mean absolute Shaplay value, it can be shown that the feature "T_max" is several times more important than any other feature.
 
+![image](https://github.com/YLS-23/fewer-sensors-same-results/assets/172030231/5ad28b62-3307-46f8-9045-a48d13adbe82)
+
 ### 5.3 Investigation of Sensitivity of Both Tasks to the Number and Placement of the Sensors
 
 The order by which sensor elimination is performed is generated randomly for a bunch of times. Then the 10-fold cross-validated MSE is calculated and plotted for each case.
@@ -157,9 +180,13 @@ The results show that:
 
 **Therefore**, the optimization of sensor quantity and placement should be oriented on the accuracy of the second task.
 
+![image](https://github.com/YLS-23/fewer-sensors-same-results/assets/172030231/aa906c64-1e85-4a3e-89cd-45a503a50773)
+
 ### 5.4 Optimal Sensor Selection for Every Possible Number of Sensors
 
 Due to the small number of sensors, the "Optimal Subset Selection Algorithm" can be employed to determine *the best* possible sensor combination. For each potential number of retained sensors, all possible combinations are evaluated. The combination that produces the minimum cross-validation MSE for the second task is selected. The model used for both tasks is a linear model with quadratic and lower-order terms.
+
+![image](https://github.com/YLS-23/fewer-sensors-same-results/assets/172030231/a9f27b76-efd1-4297-b4e5-2550c858a246)
 
 ### 5.5 Evaluate the effect of eliminating of Statistically Insignificant Terms
 
@@ -168,6 +195,9 @@ This can be easily implemented by replacing the fitlm(...,'quadratic') function 
 ### 5.6 Determining Optimal Sensor Quantity and Placement
 
 This depends on the definition of acceptable prediction accuracy. See Section 4.0. [Not yet determined]
+
+*Example: Graphic evaluation of the results for five retained sensors from 5.4*
+![image](https://github.com/YLS-23/fewer-sensors-same-results/assets/172030231/c9f93871-d37e-4a93-843d-fa7ffdc474de)
 
 ### 5.7 Interpretation of the chosen Model
 
