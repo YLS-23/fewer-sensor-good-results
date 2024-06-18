@@ -20,7 +20,6 @@ The training data for this project comes from experiments simulating various ope
 **Remarks**: 
 - Live Scripts marked with (**EN**) = complete English translation
 - Live Scripts marked with (**CN**) = for the most part in Chinese
-- All functions comments are written in Chinese
 
 ## Stage 1: Preprocess & Explore
 
@@ -104,7 +103,7 @@ with the accuracy of second task being more important.
 Investigating whether the use of machine learning algorithms can reduce the number of required sensors while maintaining prediction accuracy, and determining which sensor positions should be retained.
 
 **Constraints**:
-- Only the measured temperature data is available to the bearing. Thus, **for the first task**, the only input is sensor data, while **for the second task**, the result of the first task (T_max value) can also act as input. Note it has been confirmed at a later stage that T_max actually is *the most* important predictor for the second task, indicating an strong interconnection between the two tasks.
+- Only the measured temperature data is available to the bearing. Thus, **for the first task**, the only input is sensor data, while **for the second task**, the result of the first task (T_max value) can also act as input. Note it has been confirmed at a later stage that T_max actually is *the most* important predictor for the second task, indicating an **strong interconnection between the two tasks**.
 - Due to **energy constraints**, available models are reduced to the ones that only require minimal computational effort: linear models, decision trees, ensembles of trees.
 - Only stationary or quasi-stationary (constant angular velocity for all moving parts) operating points can be used for modeling.
 
@@ -119,11 +118,11 @@ beta_to_epsilon, epsilon_to_beta, epsilon_to_hmin, hmin_to_epsilon, beta_to_hmin
 ### 4.2 Constructing Datasets for Both Tasks
 
 - Predictors/Features for Task 1: Sensor data.
-- Predictors/Features for Task 2: Sensor data + (for the moment) the *precise* value of T_max (as a placeholder for initial analyses, to be replaced later by a predicted value for a given sensor combination).
+- Predictors/Features for Task 2: Sensor data + (for the moment) the *precise value* of T_max (as a placeholder for initial analyses, to be replaced later by a predicted value for a given sensor combination).
 
 ## Stage 5: Perform Regression
 
-Remark: still working on it, only a small part was uploaded
+Remark: Not yet fully completed.
 
 Live Scripts:
 1. characteristics (EN)
@@ -164,7 +163,7 @@ Due to the small number of sensors, the "Optimal Subset Selection Algorithm" can
 
 ### 5.5 Evaluate the effect of eliminating of Statistically Insignificant Terms
 
-This can be easily implemented by replacing the fitlm(...,'quadratic') function in the Best Subset Selection program with the stepwiselm(...,'quadratic','Upper','quadratic') function. [To be done]
+This can be easily implemented by replacing the fitlm(...,'quadratic') function in the Best Subset Selection program with the stepwiselm(...,'quadratic','Upper','quadratic') function. [Still Running]
 
 ### 5.6 Determining Optimal Sensor Quantity and Placement
 
