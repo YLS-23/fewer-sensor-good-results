@@ -135,7 +135,7 @@ Use MATLAB's Regression Learner App to evaluate the three candidate model types 
 **Results**:
 
 - The best linear model has a validation mean squared error (MSE) an order of magnitude lower than the second-best model (ensemble tree model), indicating that **linear models are best suited for the task**.
-- There is no significant difference between a linear model with interaction (and lower-order) terms and a linear model with quadratic (and lower-order) terms, indicating that **a linear model with terms higher than second-order is unnecessary**.
+- There is almost no improvement between a linear model with interaction and lower-order terms and a linear model with quadratic and lower-order terms. This indicates that **terms higher than second-order are unnecessary for the linear model**.
 
 ### 5.2 How relevant is T_max for the second Task?
 
@@ -159,7 +159,7 @@ The results show that:
 
 ### 5.4 Optimal Sensor Selection for Every Possible Number of Sensors
 
-Due to the small number of sensors, the "Optimal Subset Selection Algorithm" can be used to determine *the best* possible sensor combination for every possible number of retained sensor. The model considered is a linear model with quadratic and lower-order terms.
+Due to the small number of sensors, the "Optimal Subset Selection Algorithm" can be employed to determine *the best* possible sensor combination. For each potential number of retained sensors, all possible combinations are evaluated. The combination that produces the minimum cross-validation MSE for the second task is selected. The model used for both tasks is a linear model with quadratic and lower-order terms.
 
 ### 5.5 Evaluate the effect of eliminating of Statistically Insignificant Terms
 
