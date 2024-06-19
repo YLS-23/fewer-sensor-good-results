@@ -124,7 +124,7 @@ with the accuracy of second task being more important.
 Investigating whether the use of machine learning algorithms can reduce the number of required sensors while maintaining prediction accuracy, and determining which sensor positions should be retained.
 
 **Constraints**:
-- Only the measured temperature data is available to the bearing. Thus, **for the first task**, the only input is sensor data, while **for the second task**, the result of the first task (T_max value) can also act as input. Note it has been confirmed at a later stage that T_max actually is *the most* important predictor for the second task, indicating an **strong interconnection between the two tasks**.
+- Only the measured temperature data is available to the bearing. Thus, **for the first task**, the only input is sensor data, while **for the second task**, the result of the first task (T_max value) can also act as input. Note it has been confirmed at a later stage that T_max actually is *the most* important predictor for the second task, indicating a **strong interconnection between the two tasks**.
 - Due to **energy constraints**, available models are reduced to the ones that only require minimal computational effort: linear models, decision trees, ensembles of trees.
 - Only stationary or quasi-stationary (constant angular velocity for all moving parts) operating points can be used for modeling.
 
@@ -147,7 +147,7 @@ Remark: Not yet fully completed.
 
 Live Scripts:
 1. characteristics (EN)
-2. best_subset_selection (EN) to be updated
+2. best_subset_selection (EN) [to be updated]
 
 ### 5.1 Preliminary Selection & Upper bound on Model Complexity
 
@@ -188,7 +188,7 @@ Due to the small number of sensors, the "Optimal Subset Selection Algorithm" can
 
 ![image](https://github.com/YLS-23/fewer-sensors-same-results/assets/172030231/a9f27b76-efd1-4297-b4e5-2550c858a246)
 
-### 5.5 Evaluate the effect of eliminating of Statistically Insignificant Terms
+### 5.5 Evaluate the effect of eliminating the Statistically Insignificant Terms
 
 This can be easily implemented by replacing the fitlm(...,'quadratic') function in the Best Subset Selection program with the stepwiselm(...,'quadratic','Upper','quadratic') function. [Still Running]
 
