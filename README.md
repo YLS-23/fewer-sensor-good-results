@@ -96,7 +96,7 @@ Polynomials of degrees 3 to 8 are tested and selected based on the adjusted R^2.
 The results indicate that 
 
 - for Sommerfeld numbers So < 14, polynomials of degree 4 or higher can adequately represent the curve;
-- for Sommerfeld numbers ≥ 14, however, polynomials of degree 6 or higher are more suitable.
+- for Sommerfeld numbers So ≥ 14, however, polynomials of degree 6 or higher are more suitable.
 
 ![image](https://github.com/YLS-23/fewer-sensors-same-results/assets/172030231/3fdb9d5c-2b63-49a6-9299-d0a0d4d764dc)
 
