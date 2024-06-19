@@ -124,7 +124,7 @@ with the accuracy of second task being more important.
 Investigating whether the use of machine learning algorithms can reduce the number of required sensors while maintaining prediction accuracy, and determining which sensor positions should be retained.
 
 **Constraints**:
-- Only the measured temperature data is available to the bearing. Thus, **for the first task**, the only input is sensor data, while **for the second task**, the result of the first task (T_max value) can also act as input. Note it has been confirmed at a later stage that T_max actually is *the most* important predictor for the second task, indicating a **strong interconnection between the two tasks**.
+- Only the measured temperature data is available to the bearing. Thus, **for the first task**, the only input is sensor data, while **for the second task**, the result of the first task (T_max value) can also act as input. Note it has been confirmed at a later stage (stage 5.2) that T_max actually is *the most* important predictor for the second task, indicating a **strong interconnection between the two tasks**.
 - Due to **energy constraints**, available models are reduced to the ones that only require minimal computational effort: linear models, decision trees, ensembles of trees.
 - Only stationary or quasi-stationary (constant angular velocity for all moving parts) operating points can be used for modeling.
 
