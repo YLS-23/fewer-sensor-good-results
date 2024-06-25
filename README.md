@@ -232,7 +232,7 @@ Adopting this more lenient criterion reveals that a minimum of six sensors suffi
 
 ### 5.7 Interpretation of the chosen Model
 
-This can be achieved by ranking the features (= sensors) according to their Mean Absolute Shapley Values. Note that values extremely close to zero indicates that the corresponding sensor is not evaluated by the model and has therefore no effect on the prediction.
+This can be achieved by ranking the features (= sensors) according to their Mean Absolute Shapley Values. Note that values extremely close to zero indicate that the corresponding sensor is not evaluated by the model and has therefore no effect on the prediction.
 
 *Shapley Summary Plot in the case of 6 retained sensors*
 
