@@ -131,7 +131,7 @@ Investigating whether the use of machine learning algorithms can reduce the numb
 
 #### Definition of acceptable prediction accuracy
 
-Reliable model predictions necessitate that the predicted values of h_min closely align with the actual values, with deviations (residuals) maintained within a defined acceptable range. Given the absence of established standards specific to this application,  the subsequent section will explore the criteria that this range should satisfy.
+Reliable model predictions necessitate that the predicted values of h_min align closely with the actual values, with deviations (residuals) maintained within a defined acceptable range. Given the absence of established standards specific to this application,  the subsequent section will explore the criteria that this range should satisfy.
 
 First, a **baseline for prediction accuracy** is needed for orientation, which can be established by comparing actual measurements with theoretical values. Among all experiments, measurements from the plateau case can most suitably act the baseline as its experimental conditions strictly adheres to the definition of stationary operating conditions. This means that after the initial phase, the position of the maximum temperature and thus h_min would theoretically remain constant. 
 
@@ -143,7 +143,7 @@ Ideally, there should be an order of magnitude difference between the residuals 
 
 ##### Minimum Acceptable Accuracy:
 
-If the ideal condition cannot be met, then  at least 95% of all residuals should remain within ±1 μm. This would then require adjusting all critical thresholds by 1 μm in the conservative direction to avoid false assurances.
+If the ideal condition cannot be met, then at least 95% of all residuals should remain within ±1 μm. This would then require adjusting all critical thresholds by 1 μm in the conservative direction to avoid false assurances.
 
 *Histogram of the measured residuals (for orientation)*
 
