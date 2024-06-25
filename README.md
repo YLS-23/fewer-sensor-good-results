@@ -190,7 +190,7 @@ The results show that:
 
 **Therefore**, the optimization of sensor quantity and placement should be oriented on the accuracy of the second task.
 
-![image](https://github.com/YLS-23/fewer-sensors-same-results/assets/172030231/aa906c64-1e85-4a3e-89cd-45a503a50773)
+![image](https://github.com/YLS-23/fewer-sensors-same-results/assets/172030231/7a1f98e5-4f7b-4fa4-bf35-f58013e2270b)
 
 ### 5.4 Optimal Sensor Selection for Every Possible Number of Sensors
 
