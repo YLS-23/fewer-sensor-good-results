@@ -197,7 +197,7 @@ This can be easily implemented by replacing the fitlm(...,'quadratic') function 
 This depends on the definition of acceptable prediction accuracy. See Section 4.0. [Not yet determined]
 
 *Example: Graphic evaluation of the results for five retained sensors from 5.4*
-![image](https://github.com/YLS-23/fewer-sensors-same-results/assets/172030231/c9f93871-d37e-4a93-843d-fa7ffdc474de)
+![image](https://github.com/YLS-23/fewer-sensors-same-results/assets/172030231/aab4fd01-5330-4742-a62b-f8c6195dcb0f)
 
 ### 5.7 Interpretation of the chosen Model
 
