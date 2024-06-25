@@ -125,21 +125,21 @@ with the accuracy of second task being more important.
 Investigating whether the use of machine learning algorithms can reduce the number of required sensors while maintaining prediction accuracy, and determining which sensor positions should be retained.
 
 #### Constraints
-- Only the measured temperature data is available to the bearing. Thus, **for the first task**, the only input is sensor data, while **for the second task**, the result of the first task (T_max value) can also act as input. Preliminary analysis at a later stage (stage 5.2) indicates that T_max could be a very important predictor for the second task, suggesting a **potential strong interconnection** between the two tasks.
+- Only the measured temperature data is available to the bearing. Thus, **for the first task**, the only input is sensor data, while **for the second task**, the result of the first task (T_max value) can also act as input. Preliminary analysis at a later stage (stage 5.2) indicates that T_max could be an important predictor for the second task, suggesting a **potential strong interconnection** between the two tasks.
 - Due to **energy constraints**, available models are reduced to the ones that only require minimal computational effort: linear models, decision trees, ensembles of trees.
 - Only stationary or quasi-stationary (constant angular velocity for all moving parts) operating points can be used for modeling.
 
 #### Definition of acceptable prediction accuracy
 
-Reliable model predictions necessitate that the predicted values of h_min align closely with the actual values, with deviations (residuals) maintained within a defined acceptable range. Given the absence of established standards specific to this application,  the subsequent section will explore the criteria that this range should satisfy.
+Reliable model predictions necessitate that the predicted values of h_min align closely with the actual values, with deviations (residuals) maintained within a defined acceptable range. Given the absence of established standards regarding this application, the subsequent section will explore the criteria that this range should satisfy.
 
-First, a **baseline for prediction accuracy** is needed for orientation, which can be established by comparing actual measurements with theoretical values. Among all experiments, measurements from the plateau case can most suitably act the baseline as its experimental conditions strictly adheres to the definition of stationary operating conditions. This means that after the initial phase, the position of the maximum temperature and thus h_min would theoretically remain constant. 
+First, a **baseline for prediction accuracy** is needed for orientation, which can be established by comparing actual measurements with theoretical values. Among all experiments, measurements from the plateau case can most suitably fullfill this role, as its experimental conditions strictly adheres to the definition of stationary operating conditions. This means that after the initial phase, the position of the maximum temperature and therefore h_min would theoretically remain constant. 
 
 The measured residuals for h_min in this case follow a bell-shaped distribution with 86.076% of the residuals falling within ±2 μm and 48.945% within ±1 μm. **This level of accuracy is however insufficient**, since the deviations come close to the lowest critical threshold for h_min, which is 3 μm.
 
 ##### Ideal Accuracy:
 
-Ideally, there should be an order of magnitude difference between the residuals and the critical threshold, implying that the majority of residuals, defined here as at least 95% in alignment with the commonly used 95% confidence interval, should fall within ±10% of the lowest threshold, i.e., 0.3 μm. 
+Ideally, there should be an order of magnitude difference between the residuals and the critical threshold, meaning that the majority of residuals, defined here as ≥ 95% in alignment with the commonly used 95% confidence interval, should fall within ±10% of the lowest threshold, i.e., 0.3 μm. 
 
 ##### Minimum Acceptable Accuracy:
 
@@ -177,7 +177,7 @@ Use MATLAB's Regression Learner App to evaluate the three candidate model types 
 
 ### 5.2 Relevance of T_max for the Second Task: Preliminary Analysis
 
-By fitting a linear model with quadratic (and lower-order) terms and ranking all predictors by their mean absolute Shapley value, it can be shown that the feature 'T_max' is several times more important than any other feature when its true values are used. Note that in practice, 'T_max' must be predicted from the first task, leading to inevitable deviations from the true values used in this analysis. Consequently, its mean absolute Shapley value and thus its importance may vary.
+By fitting a linear model with quadratic (and lower-order) terms and ranking all predictors by their mean absolute Shapley value, it can be shown that the feature 'T_max' is several times more important than any other feature when its true values are used. Note that in practice, 'T_max' must be predicted as the result of the first task, leading to inevitable deviations from the true values used in this analysis. Consequently, its mean absolute Shapley value and thus its importance may vary.
 
 ![image](https://github.com/YLS-23/fewer-sensors-same-results/assets/172030231/5ad28b62-3307-46f8-9045-a48d13adbe82)
 
@@ -213,34 +213,24 @@ Removing the statistically insignificant terms has a slight but consistent negat
 
 ### 5.6 Determining Optimal Sensor Quantity and Placement
 
-To achieve a intuitive representation of prediction accuracy, the proportion of residuals that fall within specific ranges is plotted against different sensor counts. The chart illustrates the proportion of residuals that fall within ±1 μm, ±0.6 μm, and ±0.3 μm when varying numbers of sensors are retained.
+As an intuitive representation of prediction accuracy, the proportion of residuals that fall within specific ranges is plotted against different sensor counts. The chart below illustrates the proportion of residuals that fall within ±1 μm, ±0.6 μm, and ±0.3 μm respectively when varying numbers of sensors are retained.
 
 ![image](https://github.com/YLS-23/fewer-sensors-same-results/assets/172030231/2859010a-e4b0-46a8-afc4-29f512118f7b)
 
-It is evident that the minimum accuracy requirement is comfortably met with any number of sensors. However, even in the most optimistic case when the inputs from all 13 sensors are used, the ideal accuracy remains unachieved, as at most only 85.6% of residuals fall within ±0.3 μm. Nonetheless, satisfactory results can be achieved when the order-of-magnitude requirement is slightly relaxed:
+It is clear that the minimum accuracy requirement is readily satisfied with any number of sensors. However, even in the best-case scenario using inputs from all 13 sensors, the ideal accuracy is not attained, with only up to 85.6% of residuals falling within ±0.3 μm. Nonetheless, with some slight relaxation of the order-of-magnitude requirement, satisfactory results can be achieved:
 
-- Ideal accuracy requirement: For a sensor arrangement (and its corresponding model) to be selected, at least 95% of all its residuals should fall within 10% of the lowest threshold for h_min, i.e. ±0.3 μm.
-- Slightly relaxed requirement: For a sensor arrangement (and its corresponding model) to be selected, at least 95% of all its residuals should fall within 20% of the lowest threshold for h_min, i.e. ±0.6 μm.
+- Ideal accuracy requirement: For a sensor arrangement (and the corresponding model) to be considered viable, at least 95% of all residuals should fall within ±10% of the lowest threshold for h_min, i.e. ±0.3 μm.
+- Slightly relaxed requirement: For a sensor arrangement (and the corresponding model) to be considered viable, at least 95% of all its residuals should fall within ±20% of the lowest threshold for h_min, i.e. ±0.6 μm.
 
-By setting the slightly relaxed requirement as the selection criterion, it becomes apparent that when the number of senors exceeds five, 
+Adopting this more lenient criterion reveals that a minimum of six sensors suffices. Previous research has confirmed that power generated thermoelectrically can sustain the operation of six temperature sensors. Consequently, the optimal sensor count is six, positioned at φ = 195°, 202.5°, 210°, 232.5°, 240°, and 262.5° respectively.
 
-Previous studies have shown that a thermoelectric generator can support the operation of six temperature sensors. Therefore, the optimal number of sensors is six, and their optimal placement is at φ = 195°, 202.5°, 210°, 232.5°, 240°, and 262.5°.
-
-*Example: Graphic evaluation of the results in the case of 4 retained sensors*
-
-![image](https://github.com/YLS-23/fewer-sensors-same-results/assets/172030231/86d3e0ce-b248-496b-98a0-0d0529bf5a92)
-
-*Example: Graphic evaluation of the results in the case of 6 retained sensors*
+*Graphic evaluation of the results in the case of 6 retained sensors*
 
 ![image](https://github.com/YLS-23/fewer-sensors-same-results/assets/172030231/a090d7c6-4e9d-4533-ad48-243a354a699d)
 
 ### 5.7 Interpretation of the chosen Model
 
-This can be achieved by ranking the features (= sensors) according to their Mean Absolute Shapley Values. Note that values extremely close to zero indicates that the sensor is not retained and has therefore no effect on the prediction.
-
-*Shapley Summary Plot in the case of 4 retained sensors*
-
-![image](https://github.com/YLS-23/fewer-sensors-same-results/assets/172030231/9ab76e31-6d06-4507-bcce-b0de4822d434)
+This can be achieved by ranking the features (= sensors) according to their Mean Absolute Shapley Values. Note that values extremely close to zero indicates that the corresponding sensor is not evaluated by the model and has therefore no effect on the prediction.
 
 *Shapley Summary Plot in the case of 6 retained sensors*
 
