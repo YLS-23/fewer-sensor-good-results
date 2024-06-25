@@ -120,27 +120,34 @@ The Problem can be devided into two parts:
 
 with the accuracy of second task being more important.
 
-**Objective**:
+#### Objective
+
 Investigating whether the use of machine learning algorithms can reduce the number of required sensors while maintaining prediction accuracy, and determining which sensor positions should be retained.
 
-**Constraints**:
+#### Constraints
 - Only the measured temperature data is available to the bearing. Thus, **for the first task**, the only input is sensor data, while **for the second task**, the result of the first task (T_max value) can also act as input. Preliminary analysis at a later stage (stage 5.2) indicates that T_max could be a very important predictor for the second task, suggesting a **potential strong interconnection** between the two tasks.
 - Due to **energy constraints**, available models are reduced to the ones that only require minimal computational effort: linear models, decision trees, ensembles of trees.
 - Only stationary or quasi-stationary (constant angular velocity for all moving parts) operating points can be used for modeling.
 
-**Definition of acceptable prediction accuracy**: 
+#### Definition of acceptable prediction accuracy
 
-Reliable model prediction requires that the predicted h_min values closely match the actual values, with deviations (residuals) kept within an acceptable range. The following explores the criteria this range should meet:
+Reliable model predictions necessitate that the predicted values of h_min closely align with the actual values, with deviations (residuals) maintained within a defined acceptable range. Given the absence of established standards specific to this application,  the subsequent section will explore the criteria that this range should satisfy.
 
 First, a **baseline for prediction accuracy** is needed for orientation, which can be established by comparing actual measurements with theoretical values. Among all experiments, measurements from the plateau case can most suitably act the baseline as its experimental conditions strictly adheres to the definition of stationary operating conditions. This means that after the initial phase, the position of the maximum temperature and thus h_min would theoretically remain constant. 
 
-The measured residuals for h_min in this case follow a bell-shaped distribution with 86.076% of the residuals falling within ±2 μm and 48.945% within ±1 μm. **This level of accuracy is however insufficient**, because the critical threshold h_min_lim ranges from 3 to 18 μm for different bearing geometries and operating speeds. The required accuracy should be based on the smallest critical value, which is 3 μm.
+The measured residuals for h_min in this case follow a bell-shaped distribution with 86.076% of the residuals falling within ±2 μm and 48.945% within ±1 μm. **This level of accuracy is however insufficient**, since the deviations come close to the lowest critical threshold for h_min, which is 3 μm.
+
+##### Ideal Accuracy:
+
+Ideally, there should be an order of magnitude difference between the residuals and the critical threshold, implying that the majority of residuals, defined here as 95% in alignment with the commonly used 95% confidence interval, should fall within ±10% of the lowest threshold, i.e., 0.3 μm. 
+
+##### Minimum Acceptable Accuracy:
+
+If the ideal condition cannot be met, then  at least 95% of all residuals should remain within ±1 μm. This would then require adjusting all critical thresholds by 1 μm in the conservative direction to avoid false assurances.
 
 *Histogram of the measured residuals (for orientation)*
 
 ![image](https://github.com/YLS-23/fewer-sensors-same-results/assets/172030231/253cc82e-158e-4d2c-bc36-a6b4f80f0c9e)
-
-**Ideally**, there should be an order of magnitude difference between the residuals and the critical threshold, meaning the majority of residuals should be within ±10% of the lowest threshold, i.e. 0.3 μm. **If this ideal condition cannot be met**, all residuals should at least remain within ±1 μm. This would then require adjusting all critical thresholds by 1 μm in the conservative direction to ensure no false assurances.
 
 ### 4.1 Encoding Relevant Relationships from DIN 31652 into MATLAB Functions
 
