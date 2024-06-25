@@ -130,7 +130,17 @@ Investigating whether the use of machine learning algorithms can reduce the numb
 
 **Definition of acceptable prediction accuracy**: 
 
-The h_min values determined by the model should not deviate too much from the actual values. (How far is too far? Not yet determined. Current criterion: most deviations within ±1 micrometer).
+Reliable model prediction requires that the predicted h_min values closely match the actual values, with deviations (residuals) kept within an acceptable range. The following explores the criteria this range should meet:
+
+First, a **baseline for prediction accuracy** is needed for orientation, which can be established by comparing actual measurements with theoretical values. Among all experiments, measurements from the plateau case can most suitably act the baseline as its experimental conditions strictly adheres to the definition of stationary operating conditions. This means that after the initial phase, the position of the maximum temperature and thus h_min would theoretically remain constant. 
+
+The measured residuals for h_min in this case follow a bell-shaped distribution with 86.076% of the residuals falling within ±2 micrometers and 48.945% within ±1 micrometer. **This level of accuracy is however insufficient**, because the critical threshold h_min_lim ranges from 3 to 18 micrometers for different bearing geometries and operating speeds. The required accuracy should be based on the smallest critical value, which is 3 micrometers.
+
+*Histogram of the measured residuals (for orientation)*
+
+![image](https://github.com/YLS-23/fewer-sensors-same-results/assets/172030231/253cc82e-158e-4d2c-bc36-a6b4f80f0c9e)
+
+**Ideally**, there should be an order of magnitude difference between the residuals and the critical threshold, meaning the majority of residuals should be within 10% of the lowest threshold, i.e. 0.3 micrometers. **If this ideal condition cannot be met**, all residuals should at least remain within ±1 micrometer. This would then require adjusting all critical thresholds by 1 micrometer in the conservative direction to ensure no false assurances.
 
 ### 4.1 Encoding Relevant Relationships from DIN 31652 into MATLAB Functions
 
