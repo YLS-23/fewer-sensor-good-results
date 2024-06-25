@@ -124,7 +124,7 @@ with the accuracy of second task being more important.
 Investigating whether the use of machine learning algorithms can reduce the number of required sensors while maintaining prediction accuracy, and determining which sensor positions should be retained.
 
 **Constraints**:
-- Only the measured temperature data is available to the bearing. Thus, **for the first task**, the only input is sensor data, while **for the second task**, the result of the first task (T_max value) can also act as input. Note it has been confirmed at a later stage (stage 5.2) that T_max actually is *the most* important predictor for the second task, indicating a **strong interconnection between the two tasks**.
+- Only the measured temperature data is available to the bearing. Thus, **for the first task**, the only input is sensor data, while **for the second task**, the result of the first task (T_max value) can also act as input. Preliminary analysis at a later stage (stage 5.2) indicates that T_max could be a very important predictor for the second task, suggesting a **potential strong interconnection** between the two tasks.
 - Due to **energy constraints**, available models are reduced to the ones that only require minimal computational effort: linear models, decision trees, ensembles of trees.
 - Only stationary or quasi-stationary (constant angular velocity for all moving parts) operating points can be used for modeling.
 
@@ -139,7 +139,7 @@ beta_to_epsilon, epsilon_to_beta, epsilon_to_hmin, hmin_to_epsilon, beta_to_hmin
 ### 4.2 Constructing Datasets for Both Tasks
 
 - Predictors/Features for Task 1: Sensor data.
-- Predictors/Features for Task 2: Sensor data + (for the moment) the *precise value* of T_max (as a placeholder for initial analyses, to be replaced later by a predicted value for a given sensor combination).
+- Predictors/Features for Task 2: Sensor data + (for the moment) the *precise value* of T_max (as a placeholder for initial analyses, to be replaced in stage 5.4 by a predicted value for a given sensor combination).
 
 ## Stage 5: Perform Regression
 
@@ -158,9 +158,9 @@ Use MATLAB's Regression Learner App to evaluate the three candidate model types 
 - The best linear model has a validation mean squared error (MSE) an order of magnitude lower than the second-best model (ensemble tree model), indicating that **linear models are best suited for the task**.
 - There is almost no improvement between a linear model with interaction and lower-order terms and a linear model with quadratic and lower-order terms. This indicates that **terms higher than second-order are unnecessary for the linear model**.
 
-### 5.2 How relevant is T_max for the second Task?
+### 5.2 Relevance of T_max for the Second Task: Preliminary Analysis
 
-By fitting a linear model with quadratic (and lower-order) terms, and rank all predictors by their mean absolute Shaplay value, it can be shown that the feature "T_max" is several times more important than any other feature.
+By fitting a linear model with quadratic (and lower-order) terms and ranking all predictors by their mean absolute Shapley value, it can be shown that the feature 'T_max' is several times more important than any other feature when its true values are used. Note that in practice, 'T_max' must be predicted from the first task, leading to inevitable deviations from the values used in this analysis. Consequently, its mean absolute Shapley value and thus its importance may vary.
 
 ![image](https://github.com/YLS-23/fewer-sensors-same-results/assets/172030231/5ad28b62-3307-46f8-9045-a48d13adbe82)
 
