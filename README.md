@@ -139,7 +139,7 @@ The measured residuals for h_min in this case follow a bell-shaped distribution 
 
 ##### Ideal Accuracy:
 
-Ideally, there should be an order of magnitude difference between the residuals and the critical threshold, implying that the majority of residuals, defined here as 95% in alignment with the commonly used 95% confidence interval, should fall within ±10% of the lowest threshold, i.e., 0.3 μm. 
+Ideally, there should be an order of magnitude difference between the residuals and the critical threshold, implying that the majority of residuals, defined here as at least 95% in alignment with the commonly used 95% confidence interval, should fall within ±10% of the lowest threshold, i.e., 0.3 μm. 
 
 ##### Minimum Acceptable Accuracy:
 
@@ -213,9 +213,18 @@ Removing the statistically insignificant terms has a slight but consistent negat
 
 ### 5.6 Determining Optimal Sensor Quantity and Placement
 
-This depends on the definition of acceptable prediction accuracy. See Section 4.0. [Not yet determined]
+To achieve a intuitive representation of prediction accuracy, the proportion of residuals that fall within specific ranges is plotted against different sensor counts. The chart illustrates the proportion of residuals that fall within ±1 μm, ±0.6 μm, and ±0.3 μm when varying numbers of sensors are retained.
 
-![image](https://github.com/YLS-23/fewer-sensors-same-results/assets/172030231/ed33e48b-3294-4052-bcf0-dee8973edee1)
+![image](https://github.com/YLS-23/fewer-sensors-same-results/assets/172030231/2859010a-e4b0-46a8-afc4-29f512118f7b)
+
+It is evident that the minimum accuracy requirement is comfortably met with any number of sensors. However, even in the most optimistic case when the inputs from all 13 sensors are used, the ideal accuracy remains unachieved, as at most only 85.6% of residuals fall within ±0.3 μm. Nonetheless, satisfactory results can be achieved when the order-of-magnitude requirement is slightly relaxed:
+
+- Ideal accuracy requirement: For a sensor arrangement (and its corresponding model) to be selected, at least 95% of all its residuals should fall within 10% of the lowest threshold for h_min, i.e. ±0.3 μm.
+- Slightly relaxed requirement: For a sensor arrangement (and its corresponding model) to be selected, at least 95% of all its residuals should fall within 20% of the lowest threshold for h_min, i.e. ±0.6 μm.
+
+By setting the slightly relaxed requirement as the selection criterion, it becomes apparent that when the number of senors exceeds five, 
+
+Previous studies have shown that a thermoelectric generator can support the operation of six temperature sensors. Therefore, the optimal number of sensors is six, and their optimal placement is at φ = 195°, 202.5°, 210°, 232.5°, 240°, and 262.5°.
 
 *Example: Graphic evaluation of the results in the case of 4 retained sensors*
 
