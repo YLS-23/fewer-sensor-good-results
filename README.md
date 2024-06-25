@@ -134,13 +134,13 @@ Reliable model prediction requires that the predicted h_min values closely match
 
 First, a **baseline for prediction accuracy** is needed for orientation, which can be established by comparing actual measurements with theoretical values. Among all experiments, measurements from the plateau case can most suitably act the baseline as its experimental conditions strictly adheres to the definition of stationary operating conditions. This means that after the initial phase, the position of the maximum temperature and thus h_min would theoretically remain constant. 
 
-The measured residuals for h_min in this case follow a bell-shaped distribution with 86.076% of the residuals falling within ±2 micrometers and 48.945% within ±1 micrometer. **This level of accuracy is however insufficient**, because the critical threshold h_min_lim ranges from 3 to 18 micrometers for different bearing geometries and operating speeds. The required accuracy should be based on the smallest critical value, which is 3 micrometers.
+The measured residuals for h_min in this case follow a bell-shaped distribution with 86.076% of the residuals falling within ±2 μm and 48.945% within ±1 μm. **This level of accuracy is however insufficient**, because the critical threshold h_min_lim ranges from 3 to 18 μm for different bearing geometries and operating speeds. The required accuracy should be based on the smallest critical value, which is 3 μm.
 
 *Histogram of the measured residuals (for orientation)*
 
 ![image](https://github.com/YLS-23/fewer-sensors-same-results/assets/172030231/253cc82e-158e-4d2c-bc36-a6b4f80f0c9e)
 
-**Ideally**, there should be an order of magnitude difference between the residuals and the critical threshold, meaning the majority of residuals should be within 10% of the lowest threshold, i.e. 0.3 micrometers. **If this ideal condition cannot be met**, all residuals should at least remain within ±1 micrometer. This would then require adjusting all critical thresholds by 1 micrometer in the conservative direction to ensure no false assurances.
+**Ideally**, there should be an order of magnitude difference between the residuals and the critical threshold, meaning the majority of residuals should be within ±10% of the lowest threshold, i.e. 0.3 μm. **If this ideal condition cannot be met**, all residuals should at least remain within ±1 μm. This would then require adjusting all critical thresholds by 1 μm in the conservative direction to ensure no false assurances.
 
 ### 4.1 Encoding Relevant Relationships from DIN 31652 into MATLAB Functions
 
@@ -196,19 +196,38 @@ The results show that:
 
 Due to the small number of sensors, the "Optimal Subset Selection Algorithm" can be employed to determine *the best* possible sensor combination. For each potential number of retained sensors, all possible combinations are evaluated. The combination that produces the minimum cross-validation MSE for the second task is selected. The model used for both tasks is a linear model with quadratic and lower-order terms.
 
-![image](https://github.com/YLS-23/fewer-sensors-same-results/assets/172030231/a9f27b76-efd1-4297-b4e5-2550c858a246)
+![image](https://github.com/YLS-23/fewer-sensors-same-results/assets/172030231/08810d79-9670-477f-87f4-ab565e75e452)
 
 ### 5.5 Evaluate the effect of eliminating the Statistically Insignificant Terms
 
-This can be easily implemented by replacing the fitlm(...,'quadratic') function in the Best Subset Selection program with the stepwiselm(...,'quadratic','Upper','quadratic') function. [Still Running]
+Removing the statistically insignificant terms has a slight but consistent negative effect on the prediction accuracy of h_min.
+
+![image](https://github.com/YLS-23/fewer-sensors-same-results/assets/172030231/8fab8c47-7b5e-4897-80d8-46722e260aea)
 
 ### 5.6 Determining Optimal Sensor Quantity and Placement
 
 This depends on the definition of acceptable prediction accuracy. See Section 4.0. [Not yet determined]
 
-*Example: Graphic evaluation of the results for five retained sensors from 5.4*
-![image](https://github.com/YLS-23/fewer-sensors-same-results/assets/172030231/aab4fd01-5330-4742-a62b-f8c6195dcb0f)
+![image](https://github.com/YLS-23/fewer-sensors-same-results/assets/172030231/ed33e48b-3294-4052-bcf0-dee8973edee1)
+
+*Example: Graphic evaluation of the results in the case of 4 retained sensors*
+
+![image](https://github.com/YLS-23/fewer-sensors-same-results/assets/172030231/86d3e0ce-b248-496b-98a0-0d0529bf5a92)
+
+*Example: Graphic evaluation of the results in the case of 6 retained sensors*
+
+![image](https://github.com/YLS-23/fewer-sensors-same-results/assets/172030231/a090d7c6-4e9d-4533-ad48-243a354a699d)
 
 ### 5.7 Interpretation of the chosen Model
 
-This can be achieved by ranking the features (= sensors) according to their Mean Absolute Shapley Values. [To be done]
+This can be achieved by ranking the features (= sensors) according to their Mean Absolute Shapley Values. Note that values extremely close to zero indicates that the sensor is not retained and has therefore no effect on the prediction.
+
+*Shapley Summary Plot in the case of 4 retained sensors*
+
+![image](https://github.com/YLS-23/fewer-sensors-same-results/assets/172030231/9ab76e31-6d06-4507-bcce-b0de4822d434)
+
+*Shapley Summary Plot in the case of 6 retained sensors*
+
+![image](https://github.com/YLS-23/fewer-sensors-same-results/assets/172030231/10cd767b-c1c8-4d32-a712-cb483aee8e23)
+
+
