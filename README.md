@@ -179,7 +179,7 @@ Use MATLAB's Regression Learner App to evaluate the three candidate model types 
 
 ### 5.2 Relevance of T_max for the Second Task: Preliminary Analysis
 
-By fitting a linear model with quadratic (and lower-order) terms and ranking all predictors by their mean absolute Shapley value, it can be shown that the feature 'T_max' is several times more important than any other feature when its true values are used. Note that in practice, 'T_max' is the result of the first task and must be predicted, leading to inevitable deviations from the true values used in this analysis. Consequently, its mean absolute Shapley value and thus its importance may vary.
+By fitting a linear model with quadratic (and lower-order) terms and ranking all predictors by their mean absolute Shapley value, it can be shown that the feature 'T_max' is several times more important than any other feature when its true values are used. Note that in practice, 'T_max' is the result of the first task and is a predicted value, leading to inevitable deviations from the true values used in this analysis. Consequently, its mean absolute Shapley value and thus its importance may vary.
 
 ![image](https://github.com/YLS-23/fewer-sensors-same-results/assets/172030231/5ad28b62-3307-46f8-9045-a48d13adbe82)
 
