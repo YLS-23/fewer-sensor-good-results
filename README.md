@@ -191,11 +191,11 @@ The results show that:
 
 **For the First Task**:
 - The prediction of the T_max value is relatively insensitive to sensor placement. There is a clear decreasing trend in validation RMSE with an increasing number of sensors, regardless which sensors are chosen.
-- High accuracy (RMSE < 0.05 °C) is easily achievable.
+- High accuracy is easily achievable.
 
 **For the Second Task**:
 - The prediction of the T_max position is sensitive to sensor placement. Adding certain sensors can significantly improve accuracy.
-- High accuracy (RMSE < 1 °) is difficult to achieve.
+- High accuracy is difficult to achieve, compared with the first task.
 
 **Therefore**, the optimization of sensor quantity and placement should be oriented on the accuracy of the second task.
 
