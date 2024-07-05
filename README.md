@@ -160,8 +160,6 @@ beta_to_epsilon, epsilon_to_beta, epsilon_to_hmin, hmin_to_epsilon, beta_to_hmin
 
 ## Stage 5: Perform Regression
 
-Remark: Not yet fully completed.
-
 Live Scripts:
 1. characteristics (EN)
 2. best_subset_selection (EN) 
